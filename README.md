@@ -1,12 +1,15 @@
-# AcademyAPI - Course Management System
+# AcademyAPI - Full-Stack Course Management System
 
-A robust ASP.NET Core 10 Web API for managing university courses, instructors, students, and enrollments with JWT authentication, role-based access control, and comprehensive API documentation.
+A comprehensive full-stack application for managing university courses, instructors, students, and enrollments. Features an ASP.NET Core 10 Web API backend with JWT authentication, role-based access control, Swagger documentation, and a modern React frontend with authentication, routing, and course management UI.
 
 ## 📋 Table of Contents
 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Quick Start](#quick-start)
+- [Backend Setup](#backend-setup)
+- [Frontend Setup](#frontend-setup)
+- [Running Both Together](#running-both-together)
 - [Project Structure](#project-structure)
 - [Technologies](#technologies)
 - [Database Schema](#database-schema)
@@ -17,6 +20,7 @@ A robust ASP.NET Core 10 Web API for managing university courses, instructors, s
 
 ## ✨ Features
 
+### Backend API
 - **JWT-Based Authentication**: Secure token-based authentication for Instructors and Students
 - **Role-Based Access Control**: Enforce permissions based on user roles (Admin, Instructor, Student)
 - **Course Management**: Full CRUD operations for course management
@@ -27,21 +31,46 @@ A robust ASP.NET Core 10 Web API for managing university courses, instructors, s
 - **Password Hashing**: Secure password storage using BCrypt
 - **Entity Framework Core**: Type-safe ORM with SQLite database
 
+### Frontend UI
+- **User Authentication**: Login/logout with JWT token management
+- **Protected Routes**: Role-based route protection
+- **Course Listing**: Browse all available courses
+- **Student Enrollment**: Enroll in courses and track status
+- **Course Management**: Create and edit courses (Instructor/Admin)
+- **Responsive Design**: Mobile-friendly interface using React and Vite
+- **API Integration**: Seamless communication with backend API
+- **Loading States**: User-friendly loading indicators
+
 ## 📦 Prerequisites
 
+### Backend
 - **.NET 10 SDK** or later ([Download](https://dotnet.microsoft.com/download))
+
+### Frontend
+- **Node.js** 16.x or later ([Download](https://nodejs.org/))
+- **npm** (comes with Node.js)
+
+### General
 - **Git** (optional, for cloning)
 - A terminal or command prompt
 
 ## 🚀 Quick Start
 
-### 1. Clone/Extract the Project
+This project consists of two main components:
+- **Backend**: ASP.NET Core 10 Web API (runs on port 7001)
+- **Frontend**: React + Vite (runs on port 5173)
+
+### Clone/Extract the Project
 
 ```bash
-cd AcademyAPI
+cd d:\web\ pro\AcademyAPI
 ```
 
-### 2. Run the API
+## 🔌 Backend Setup
+
+### 1. Run the Backend API
+
+From the root directory:
 
 ```bash
 dotnet run
@@ -49,19 +78,21 @@ dotnet run
 
 The API will:
 - Create the SQLite database (`AcademyDB.db`) if it doesn't exist
-- Automatically seed an Admin user
-- Start on `https://localhost:7001` (or the port shown in terminal output)
+- Automatically seed an Admin user with credentials:
+  - **Email**: `admin@academy.com`
+  - **Password**: `Admin123!`
+- Start on `https://localhost:7001`
 
-### 3. Access Swagger Documentation
+### 2. Access Swagger Documentation
 
 Open your browser and navigate to:
 ```
 https://localhost:7001/swagger
 ```
 
-### 4. Test Authentication
+### 3. Test Backend Authentication
 
-1. Use the `/api/auth/login` endpoint with credentials:
+1. Use the `/api/auth/login` endpoint with admin credentials:
    ```json
    {
      "email": "admin@academy.com",
@@ -70,6 +101,62 @@ https://localhost:7001/swagger
    ```
 2. Copy the returned JWT token
 3. Click the **Authorize** button in Swagger and paste: `Bearer <your-token>`
+
+---
+
+## 🎨 Frontend Setup
+
+### 1. Install Frontend Dependencies
+
+Navigate to the frontend directory and install npm packages:
+
+```bash
+cd frontend
+npm install
+```
+
+### 2. Run the Frontend Development Server
+
+```bash
+npm run dev
+```
+
+The frontend will:
+- Start on `http://localhost:5173`
+- Automatically open in your default browser
+- Hot-reload on file changes
+
+### 3. Build for Production
+
+```bash
+npm run build
+```
+
+Output will be in the `dist/` folder.
+
+---
+
+## 🚀 Running Both Together
+
+### Terminal 1 - Start Backend
+
+```bash
+cd d:\web\ pro\AcademyAPI
+dotnet run
+# API runs on https://localhost:7001
+```
+
+### Terminal 2 - Start Frontend
+
+```bash
+cd d:\web\ pro\AcademyAPI\frontend
+npm run dev
+# Frontend runs on http://localhost:5173
+```
+
+Both applications communicate via HTTP requests. The frontend is already configured to call the backend API at `https://localhost:7001`.
+
+---
 
 ## 📁 Project Structure
 
@@ -100,11 +187,47 @@ AcademyAPI/
 ├── Program.cs             # App configuration & startup
 ├── appsettings.json       # Configuration (DB, JWT, etc.)
 ├── AcademyAPI.http        # Sample HTTP requests
-└── AcademyAPI.csproj      # Project file
-
+├── AcademyAPI.csproj      # Project file
+│
+└── frontend/              # React + Vite Frontend
+    ├── src/
+    │   ├── main.jsx       # App entry point
+    │   ├── App.jsx        # Root component
+    │   ├── App.css        # Styles
+    │   ├── index.css      # Global styles
+    │   ├── assets/        # Images, fonts, etc.
+    │   ├── components/    # Reusable components
+    │   │   ├── NavBar.jsx        # Navigation bar
+    │   │   ├── Loading.jsx       # Loading indicator
+    │   │   └── ProtectedRoute.jsx # Route protection
+    │   ├── pages/         # Page components
+    │   │   ├── Home.jsx
+    │   │   ├── Login.jsx
+    │   │   ├── Courses.jsx
+    │   │   ├── CourseForm.jsx
+    │   │   ├── Students.jsx
+    │   │   ├── StudentRegister.jsx
+    │   │   ├── Enrollments.jsx
+    │   │   ├── Instructors.jsx
+    │   │   └── NotFound.jsx
+    │   ├── contexts/      # React Context (Auth)
+    │   │   └── AuthContext.jsx
+    │   └── services/      # API client services
+    │       ├── api.js            # Axios instance
+    │       ├── authService.js
+    │       ├── courseService.js
+    │       ├── studentService.js
+    │       ├── enrollmentService.js
+    │       └── instructorService.js
+    ├── public/            # Static assets
+    ├── package.json       # Frontend dependencies
+    ├── vite.config.js     # Vite configuration
+    └── index.html         # HTML entry point
 ```
 
 ## 🛠️ Technologies
+
+### Backend
 
 | Technology | Version | Purpose |
 |-----------|---------|---------|
@@ -114,6 +237,16 @@ AcademyAPI/
 | JWT Bearer | - | Token-based authentication |
 | BCrypt.Net-Next | - | Secure password hashing |
 | Swashbuckle | - | Swagger/OpenAPI documentation |
+
+### Frontend
+
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| React | 18.x | JavaScript library for UI |
+| Vite | 5.x | Fast build tool and dev server |
+| React Router | 6.x | Client-side routing |
+| Axios | 1.x | HTTP client for API calls |
+| CSS3 | - | Styling and responsive design |
 
 ## 🗄️ Database Schema
 
@@ -357,6 +490,8 @@ Check `AcademyAPI.http` for pre-configured sample requests you can run directly 
 
 ## 🐛 Troubleshooting
 
+### Backend Issues
+
 **Port already in use:**
 ```bash
 dotnet run --urls "https://localhost:7002"
@@ -372,6 +507,45 @@ The API automatically creates `AcademyDB.db` on first run. Ensure write permissi
 **CORS errors:**
 Configure CORS in `Program.cs` if calling from a different domain.
 
+### Frontend Issues
+
+**Dependencies not installing:**
+```bash
+cd frontend
+npm install --legacy-peer-deps
+```
+
+**Port 5173 already in use:**
+```bash
+npm run dev -- --port 5174
+```
+
+**Cannot connect to backend:**
+- Verify backend is running on `https://localhost:7001`
+- Check `frontend/src/services/api.js` for correct API base URL
+- Ensure HTTPS is used (not HTTP) for API calls
+
+**Blank page on startup:**
+- Clear browser cache (Ctrl+Shift+Delete)
+- Check browser console for JavaScript errors
+- Verify Node.js version: `node --version` (should be 16.x or later)
+
+**Hot reload not working:**
+- Try restarting the dev server: `npm run dev`
+- Check that Vite is properly configured in `vite.config.js`
+
+### General Issues
+
+**Both servers need to run simultaneously:**
+- Open two terminal windows/tabs
+- Run backend in one, frontend in the other
+- Both must be running for the full application to work
+
+**API calls return 404:**
+- Ensure backend server is running
+- Verify the endpoint path is correct
+- Check Network tab in browser DevTools for actual request URL
+
 ---
 
-**Last Updated:** April 2026 | **Maintained by:** Academy Development Team
+**Last Updated:** May 2026 | **Maintained by:** Academy Development Team | **Full-Stack Project**: Backend API + React Frontend

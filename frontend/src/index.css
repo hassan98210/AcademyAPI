@@ -1,0 +1,45 @@
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #111827;
+  background: #f8fafc;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f8fafc;
+  color: #111827;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: #bfdbfe;
+  color: #1f2937;
+}

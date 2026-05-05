@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\M.Reda\\py\\AcademyAPI\\AcademyAPI.csproj": {}
+    "C:\\Users\\Asser\\Desktop\\alhassan\\AcademyAPI.csproj": {}
   },
   "projects": {
-    "D:\\M.Reda\\py\\AcademyAPI\\AcademyAPI.csproj": {
+    "C:\\Users\\Asser\\Desktop\\alhassan\\AcademyAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\M.Reda\\py\\AcademyAPI\\AcademyAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Asser\\Desktop\\alhassan\\AcademyAPI.csproj",
         "projectName": "AcademyAPI",
-        "projectPath": "D:\\M.Reda\\py\\AcademyAPI\\AcademyAPI.csproj",
-        "packagesPath": "C:\\Users\\Mohamad Reda\\.nuget\\packages\\",
-        "outputPath": "D:\\M.Reda\\py\\AcademyAPI\\obj\\",
+        "projectPath": "C:\\Users\\Asser\\Desktop\\alhassan\\AcademyAPI.csproj",
+        "packagesPath": "C:\\Users\\Asser\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asser\\Desktop\\alhassan\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\M.Reda\\progfiles\\vsc\\compandtools\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Mohamad Reda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Asser\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -98,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
