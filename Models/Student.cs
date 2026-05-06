@@ -12,6 +12,7 @@ public class Student
     [Required]
     public string PasswordHash { get; set; } = string.Empty;
     public string Role { get; set; } = "Student";
+    public string? PhotoUrl { get; set; } // Base64 encoded photo data URI
 
     public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
 }
